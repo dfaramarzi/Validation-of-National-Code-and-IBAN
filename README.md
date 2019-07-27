@@ -36,4 +36,18 @@ Check validation of Iranian National Code and IBAN.
             var o = long.Parse(array[9].ToString(CultureInfo.InvariantCulture));
             return temp == long.Parse(array[9].ToString(CultureInfo.InvariantCulture));
         }
-        ```
+```
+# IBAN Validation
+```
+      public static bool IsValid(string IBAN)
+        {
+            IBAN = IBAN.ToUpper();
+            if (IBAN.Length != 26) return false;
+            var changediban = IBAN.Substring(4, 22);
+            changediban = changediban.Insert(22, (Convert.ToInt16(IBAN[0]) - 55).ToString());
+            changediban = changediban.Insert(24, (Convert.ToInt16(IBAN[1]) - 55).ToString());
+            changediban = changediban.Insert(26, IBAN.Substring(2, 2));
+            if (BigInteger.Parse(changediban) % 97 != 1) return false;
+            return true;
+        }
+```
