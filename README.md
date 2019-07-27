@@ -1,5 +1,5 @@
 # Validation-of-National-Code-and-IBAN
-Check validation of Iranian National Code and IBAN.
+Check validation of Iranian National Code and IBAN in C#.
 
 # National Code Validation
 ```
@@ -39,7 +39,7 @@ Check validation of Iranian National Code and IBAN.
 ```
 # IBAN Validation
 ```
-      public static bool IsValid(string IBAN)
+      public bool IsValid(string IBAN)
         {
             IBAN = IBAN.ToUpper();
             if (IBAN.Length != 26) return false;
